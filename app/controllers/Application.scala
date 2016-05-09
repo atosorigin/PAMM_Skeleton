@@ -4,6 +4,8 @@ import play.api.mvc.{Action, Controller}
 
 object Application extends Controller {
   def index = Action {
-    Ok(views.html.index("Hello Play Framework"))
+
+    //This re-directs the default index action to server the index.html page
+    MovedPermanently("/index.html")
   }
 }

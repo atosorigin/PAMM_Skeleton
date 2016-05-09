@@ -4,6 +4,10 @@
 
 GET     /                           controllers.Application.index()
 
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
-GET     /webjars/*file              controllers.WebJarAssets.at(file)
+# Webservice routing
+# GET     /ws/mywebservicehere       controllers.mywebservicehere.method()
+
+# UI Routing
+# this maps all static resources from "public" to the root URL path; anything that hasn't been intercepted above will
+# try to resolve to an asset in "public". This separates Play from the front-end.
+GET     /*file                      controllers.Assets.at(path="/public", file)
