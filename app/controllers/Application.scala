@@ -6,8 +6,7 @@ import com.mongodb.casbah.Imports._
 object Application extends Controller {
   def index = Action {
 
-    //This re-directs the default index action to server the index.html page
-    MovedPermanently("/index.html")
+    Ok(views.html.Index())
   }
 
   def helloMongo = Action {

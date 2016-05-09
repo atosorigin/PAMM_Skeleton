@@ -5,10 +5,6 @@
 GET     /                           controllers.Application.index()
 GET     /hello                      controllers.Application.helloMongo()
 
-# Webservice routing
-# GET     /ws/mywebservicehere       controllers.mywebservicehere.method()
-
-# UI Routing
-# this maps all static resources from "public" to the root URL path; anything that hasn't been intercepted above will
-# try to resolve to an asset in "public". This separates Play from the front-end.
-GET     /*file                      controllers.Assets.at(path="/public", file)
+#do we need these?
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /webjars/*file              controllers.WebJarAssets.at(file)
