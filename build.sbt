@@ -8,6 +8,8 @@ libraryDependencies ++= Seq(
   "org.webjars" % "requirejs" % "2.1.11-1"
 )
 
+libraryDependencies += "org.mongodb" %% "casbah" % "2.5.0"
+
 lazy val root = (project in file(".")).addPlugins(PlayScala)
 
 

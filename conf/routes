@@ -3,6 +3,7 @@
 # ~~~~
 
 GET     /                           controllers.Application.index()
+GET     /hello                      controllers.Application.helloMongo()
 
 # Webservice routing
 # GET     /ws/mywebservicehere       controllers.mywebservicehere.method()
