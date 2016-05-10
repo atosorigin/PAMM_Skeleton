@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('pammSkeleton', []);
+var module = angular.module('pammSkeleton.services', []);
