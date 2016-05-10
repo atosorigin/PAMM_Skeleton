@@ -1,7 +1,7 @@
 package controllers
 
-import play.api.mvc.{Action, Controller}
 import com.mongodb.casbah.Imports._
+import play.api.mvc.{Action, Controller}
 
 /**
   * Created by markfearnley on 10/05/2016.

@@ -16,4 +16,4 @@ GET     /css/*file                  controllers.Assets.at(path="/public/css", fi
 
 #Webservices
 GET     /ws/hello                   controllers.HelloController.helloWorld()
-GET     /ws/callCount               controllers.MongoController.helloMongo()
+#GET     /ws/callCount               controllers.MongoController.helloMongo()
