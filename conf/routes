@@ -3,7 +3,8 @@
 # ~~~~
 
 GET     /                           controllers.Application.index()
-GET     /hello                      controllers.Application.helloMongo()
+GET     /ws/hello                   controllers.HelloController.helloWorld()
+GET     /ws/callCount               controllers.MongoController.helloMongo()
 
 #do we need these?
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
