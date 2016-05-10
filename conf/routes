@@ -2,10 +2,12 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+#Default route for the index page
 GET     /                           controllers.Application.index()
+
+#Allows us to get assets from the public folder using the /assets pre-fix
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+#Webservices
 GET     /ws/hello                   controllers.HelloController.helloWorld()
 GET     /ws/callCount               controllers.MongoController.helloMongo()
-
-#do we need these?
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
-GET     /webjars/*file              controllers.WebJarAssets.at(file)
