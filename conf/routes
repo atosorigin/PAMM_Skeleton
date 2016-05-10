@@ -12,7 +12,7 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /controllers/*file          controllers.Assets.at(path="/public/script/controllers", file)
 GET     /services/*file             controllers.Assets.at(path="/public/script/services", file)
 GET     /images/*file               controllers.Assets.at(path="/public/images", file)
-GET     /css/*file                  controllers.Assets.at(path="/public/css", file)
+GET     /stylesheets/*file                  controllers.Assets.at(path="/public/stylesheets", file)
 
 #Webservices
 GET     /ws/hello                   controllers.HelloController.helloWorld()

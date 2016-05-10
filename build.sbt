@@ -10,7 +10,10 @@ libraryDependencies ++= Seq(
 
 libraryDependencies += "org.mongodb" %% "casbah" % "2.5.0"
 
-lazy val root = (project in file(".")).addPlugins(PlayScala)
+lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
+includeFilter in (Assets, LessKeys.less) := "*.less"
+
+excludeFilter in (Assets, LessKeys.less) := "_*.less"
 
 fork in run := true
