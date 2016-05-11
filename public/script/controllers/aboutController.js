@@ -2,7 +2,7 @@
 
 var module = angular.module('pammSkeleton.controllers');
 
-module.controller('AboutController', [ '$http', '$log', '$scope',
+module.controller('AboutCtrl', [ '$http', '$log', '$scope',
     function($http, $log, $scope) {
 
     }]);

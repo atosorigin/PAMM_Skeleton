@@ -2,7 +2,7 @@
 
 var module = angular.module('pammSkeleton.controllers');
 
-module.controller('HomeController', [ '$http', '$log', '$scope', 'helloWorldService',
+module.controller('HomeCtrl', [ '$http', '$log', '$scope', 'helloWorldService',
     function($http, $log, $scope, helloWorldService) {
 
         // Example of calling a service on controller load. Loads data from a service into scope for use in html.
