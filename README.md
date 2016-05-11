@@ -1,6 +1,15 @@
 
 #PAMM Skeleton
 
+##Contents
+1. [About](#About)
+2. [Technology Stack](#Technology-Stack)
+3. [Installation Instructions](#Installation-Instructions)
+   1. [Basic](#Basic)
+   2. [IntelliJ](#IntelliJ)
+   3. [MongoDB](#MongoDB)
+      * [Configuration](#Configuration)
+
 ##About
 The PAMM Skeleton project is a quick start, template project using the PAMM stack. It is designed to be barebones so that developers can download and start coding business requirements rapidly with no set-up required.
 The project is based off the "hello-play-2.3-scala" template provided within Activator, however *significant* changes have been made.
@@ -36,5 +45,18 @@ The project is based off the "hello-play-2.3-scala" template provided within Act
 11. Select 'SBT Task'
 12. Set the 'Name' to be "Run"
 13. Set the 'task' to be "run"
-14. Click Apply and close the menu
-15. You can now deploy/run/debug the application using the IntelliJ Run menu
+14. Remove 'Make' from the 'Before Launch' tasks
+15. Click Apply and close the menu
+16. You can now deploy/run/debug the application using the IntelliJ Run menu
+
+###MongoDB
+This project includes Casbah, a Scala toolkit for MongoDB. It's usage is optional, and it can be replaced with a suitable alternative if required. A controller has been provided with an example of simple database interactions, and should be adapted or removed as needed.
+
+####Configuration
+There are 3 options for configuring which MongoDB instance the application uses:
+1. Leave it as the default, which assumes the database is running on localhost under the default port (27017)
+2. Change the target MongoDB URI within the `application.conf` file. Altering the first instance of `mongodb.uri` will change the default instance of MongoDB used by the application.
+3. Set the `$MONGODB_URI` environment variable to the appropriate URI, this will be taken over the defaults set within `application.conf`
+
+More detail on MongoDB URIs can be found at:
+https://docs.mongodb.com/manual/reference/connection-string/
