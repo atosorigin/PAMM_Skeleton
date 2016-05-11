@@ -3,6 +3,7 @@ package controllers
 import com.mongodb.MongoException
 import play.api.mvc.{Action, Controller}
 import com.mongodb.casbah.Imports._
+import play.api.Play
 
 /**
   * Created by markfearnley on 10/05/2016.
@@ -20,7 +21,11 @@ class MongoController extends Controller {
   def helloMongo = Action {
 
     try {
-      val collection = MongoClient()("pamm_skeleton")("hello_play")
+      val mongoUri = Play.current.configuration.getString("mongodb.uri")
+      val collection = if (mongoUri.isDefined)
+          MongoClient(MongoClientURI(mongoUri.get))("pamm_skeleton")("hello_play")
+        else
+          MongoClient()("pamm_skeleton")("hello_play")
 
       // Get a list of all current counts saved to the database
       val q = countTag $exists true
@@ -42,7 +47,7 @@ class MongoController extends Controller {
       // Pass back the count
       Ok(String.valueOf(count))
     } catch {
-      case ex: MongoException => InternalServerError("Database not found.")
+      case ex: MongoException => InternalServerError(Play.current.configuration.getString("mongodb.uri").get)
     }
   }
 
