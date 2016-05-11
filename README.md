@@ -27,9 +27,8 @@ The project is based off the "hello-play-2.3-scala" template provided within Act
 1. `git clone` <repo address>
 2. Browse to the directory root
 3. `sbt compile` to ensure the solution builds
-3. `sbt run` to start the application
-4. Browse to `http:localhost:9000` from your browser to see the application
-5. *[optional]* Start MongoDB using Docker or your local installation
+4. `sbt run` to start the application
+5. Browse to `http:localhost:9000` from your browser to see the application
 
 ###IntelliJ
 1. Complete the steps above to download the solution
@@ -54,9 +53,9 @@ This project includes Casbah, a Scala toolkit for MongoDB. It's usage is optiona
 
 ####Configuration
 There are 3 options for configuring which MongoDB instance the application uses:
-1. Leave it as the default, which assumes the database is running on localhost under the default port (27017)
-2. Change the target MongoDB URI within the `application.conf` file. Altering the first instance of `mongodb.uri` will change the default instance of MongoDB used by the application.
-3. Set the `$MONGODB_URI` environment variable to the appropriate URI, this will be taken over the defaults set within `application.conf`
+ 1. Set the `$MONGODB_URI` environment variable to the appropriate URI, this will be taken over the defaults set within `application.conf`.
+ 2. Change the target MongoDB URI within the `application.conf` file. Altering the first instance of `mongodb.uri` will change the default instance of MongoDB used by the application providing the environment variable is not present.
+ 3. Leave it as the default, which assumes the database is running on localhost under the default port (27017).
 
 More detail on MongoDB URIs can be found at:
 https://docs.mongodb.com/manual/reference/connection-string/
