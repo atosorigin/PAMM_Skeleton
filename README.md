@@ -49,7 +49,7 @@ The project is based off the "hello-play-2.3-scala" template provided within Act
 16. You can now deploy/run/debug the application using the IntelliJ Run menu
 
 ###MongoDB
-This project includes Casbah, a Scala toolkit for MongoDB. It's usage is optional, and it can be replaced with a suitable alternative if required. A controller has been provided with an example of simple database interactions, and should be adapted or removed as needed.
+This project includes [Casbah](https://github.com/mongodb/casbah), a Scala toolkit for MongoDB. It's usage is optional, and it can be replaced with a suitable alternative if required. A controller has been provided with an example of simple database interactions, and should be adapted or removed as needed.
 
 ####Configuration
 There are 3 options for configuring which MongoDB instance the application uses:
