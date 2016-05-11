@@ -2,15 +2,15 @@
 #PAMM Skeleton
 
 ##Contents
-1. [About](#About)
-2. [Technology Stack](#Technology-Stack)
-3. [Installation Instructions](#Installation-Instructions)
-   1. [Basic](#Basic)
-   2. [IntelliJ](#IntelliJ)
-   3. [MongoDB](#MongoDB)
-      * [Configuration](#Configuration)
+1. [About](#about)
+2. [Technology Stack](#technology-stack)
+3. [Installation Instructions](#installation-instructions)
+   1. [Basic](#basic)
+   2. [IntelliJ](#intelliJ)
+   3. [MongoDB](#mongoDB)
+      * [Configuration](#configuration)
 
-##About
+## About
 The PAMM Skeleton project is a quick start, template project using the PAMM stack. It is designed to be barebones so that developers can download and start coding business requirements rapidly with no set-up required.
 The project is based off the "hello-play-2.3-scala" template provided within Activator, however *significant* changes have been made.
 
