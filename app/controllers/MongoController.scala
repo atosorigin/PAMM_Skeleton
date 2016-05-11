@@ -7,7 +7,7 @@ import com.mongodb.casbah.Imports._
 /**
   * Created by markfearnley on 10/05/2016.
   */
-object MongoController extends Controller {
+class MongoController extends Controller {
 
   final val countTag = "callCount"
 
