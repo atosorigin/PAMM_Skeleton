@@ -6,8 +6,8 @@
 2. [Technology Stack](#technology-stack)
 3. [Installation Instructions](#installation-instructions)
    1. [Basic](#basic)
-   2. [IntelliJ](#intelliJ)
-   3. [MongoDB](#mongoDB)
+   2. [IntelliJ](#intellij)
+   3. [MongoDB](#mongodb)
       * [Configuration](#configuration)
 
 ## About
