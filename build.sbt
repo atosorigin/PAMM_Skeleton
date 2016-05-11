@@ -11,7 +11,11 @@ libraryDependencies ++= Seq(
   "org.webjars" % "angularjs" % "1.5.5"
 )
 
+libraryDependencies += specs2 % Test
+
 libraryDependencies += "org.mongodb" %% "casbah" % "3.1.0"
+
+resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 
 routesGenerator := InjectedRoutesGenerator
 
