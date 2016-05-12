@@ -28,7 +28,7 @@ The project is based off the "hello-play-2.3-scala" template provided within Act
 2. Browse to the directory root
 3. `sbt compile` to ensure the solution builds
 4. `sbt run` to start the application
-5. Browse to `http:localhost:9000` from your browser to see the application
+5. Browse to `http://localhost:9000` from your browser to see the application
 
 ###IntelliJ
 1. Complete the steps above to download the solution
