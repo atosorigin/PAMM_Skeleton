@@ -11,10 +11,17 @@
             $routeProvider
                 .when('/home', {
                     templateUrl: 'assets/partials/home.html',
-                    controller: "HomeController"
+                    controller: "HomeCtrl"
+                })
+                .when('/about', {
+                    templateUrl: 'assets/partials/about.html',
+                    controller: "AboutCtrl"
                 })
                 .otherwise({
                     redirectTo: '/home'
                 });
           }]);
+
+    angular.module('pammSkeleton.services', []);
+    angular.module('pammSkeleton.controllers', []);
 })();

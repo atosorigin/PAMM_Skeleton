@@ -8,7 +8,7 @@ import play.mvc.Result;
  */
 public class HelloController extends Controller {
 
-    public static Result helloWorld() {
+    public Result helloWorld() {
         return ok("Hello World");
     }
 }

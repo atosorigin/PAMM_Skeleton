@@ -9,7 +9,7 @@ import views.html.Index;
  */
 public class Application extends Controller {
 
-    public static Result index() {
+    public Result index() {
         return ok(Index.render());
     }
 }
