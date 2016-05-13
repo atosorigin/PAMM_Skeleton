@@ -5,7 +5,7 @@ import play.api.mvc.{Action, Controller}
 /**
   * Created by markfearnley on 10/05/2016.
   */
-object HelloController extends Controller {
+class HelloController extends Controller {
 
   def helloWorld = Action {
     Ok("Hello World")

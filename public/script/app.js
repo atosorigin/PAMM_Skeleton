@@ -11,11 +11,11 @@
             $routeProvider
                 .when('/home', {
                     templateUrl: 'assets/partials/home.html',
-                    controller: "HomeController"
+                    controller: "HomeCtrl"
                 })
                 .when('/about', {
                     templateUrl: 'assets/partials/about.html',
-                    controller: "AboutController"
+                    controller: "AboutCtrl"
                 })
                 .otherwise({
                     redirectTo: '/home'
