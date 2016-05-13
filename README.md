@@ -23,6 +23,9 @@ The project is based off the "hello-play-2.3-scala" template provided within Act
 - MongoDB (sample integration provided via Casbah)
 
 ##Installation Instructions
+
+**Note: Running the 'sbt' commands from behind the Atos Proxy may result in compilation errors, if sbt needs to download missing dependencies** 
+
 ###Basic
 1. `git clone` <repo address>
 2. Browse to the directory root
@@ -32,21 +35,22 @@ The project is based off the "hello-play-2.3-scala" template provided within Act
 
 ###IntelliJ
 1. Complete the steps above to download the solution
-2. Open IntelliJ
-3. Select 'Open'
-4. Select the root folder of the project
-5. Select to import as an SBT project
-6. Select 'auto import'
-7. This should import the solution into IntelliJ
-8. Go to "Run" on the menu
-9. Select 'Edit Configurations'
-10. Add a new configuration by processing the + button in the top left
-11. Select 'SBT Task'
-12. Set the 'Name' to be "Run"
-13. Set the 'task' to be "run"
-14. Remove 'Make' from the 'Before Launch' tasks
-15. Click Apply and close the menu
-16. You can now deploy/run/debug the application using the IntelliJ Run menu
+2. Import the project into IntelliJ
+   1. Open IntelliJ
+   2. Select 'Open'
+   3. Select the root folder of the project
+   4. Select to import as an SBT project
+   5. Select 'auto import'
+3. Configure IntelliJ to run the project
+   1. Go to "Run" on the menu
+   2. Select 'Edit Configurations'
+   3. Add a new configuration by processing the + button in the top left
+   4. Select 'SBT Task'
+   5. Set the 'Name' to be "SBT Run"
+   6. Set the 'task' to be "clean compile run"
+   7. Remove 'Make' from the 'Before Launch' tasks
+   8. Click Apply and close the menu
+4. You can now run/debug the application using the "SBT Run" option from the IntelliJ Run menu
 
 ###MongoDB
 This project includes [Casbah](https://github.com/mongodb/casbah), a Scala toolkit for MongoDB. It's usage is optional, and it can be replaced with a suitable alternative if required. A controller has been provided with an example of simple database interactions, and should be adapted or removed as needed.
