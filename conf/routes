@@ -17,3 +17,7 @@ GET     /css/*file                  controllers.Assets.at(path="/public/css", fi
 #Webservices
 GET     /ws/hello                   controllers.HelloController.helloWorld()
 GET     /ws/callCount               controllers.MongoController.helloMongo()
+
+#Authentication Webservices
+POST    /ws/register                login.LoginController.register()
+POST    /ws/authenticate            login.LoginController.authenticate()

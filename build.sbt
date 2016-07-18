@@ -11,7 +11,9 @@ libraryDependencies ++= Seq(
 
 libraryDependencies += specs2 % Test
 
+// Add project dependencies here
 libraryDependencies += "org.mongodb" %% "casbah" % "3.1.0"
+libraryDependencies += "org.mindrot" % "jbcrypt" % "0.3m"
 
 resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 

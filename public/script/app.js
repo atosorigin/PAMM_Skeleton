@@ -9,6 +9,12 @@
 
     app.config(['$routeProvider', function($routeProvider) {
             $routeProvider
+                .when('/login', {
+                    templateUrl: 'assets/partials/login.html'
+                })
+                .when('/register', {
+                    templateUrl: 'assets/partials/register.html'
+                })
                 .when('/home', {
                     templateUrl: 'assets/partials/home.html',
                     controller: "HomeCtrl"
