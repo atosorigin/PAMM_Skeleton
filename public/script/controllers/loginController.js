@@ -6,8 +6,8 @@ var module = angular.module('pammSkeleton.controllers');
 /**
  * Controller which handles authentication of a user.
  */
-module.controller('LoginCtrl', ['$http', '$log', '$scope', '$rootScope', '$location', 'loginService',
-    function ($http, $log, $scope, $rootScope,$location, loginService) {
+module.controller('LoginCtrl', ['$http', '$log', '$scope', '$rootScope', '$state', 'loginService',
+    function ($http, $log, $scope, $rootScope, $state, loginService) {
 
         var vm = this;
 
@@ -37,7 +37,7 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$rootScope', '$locat
                 if (data["success"]) {
                     $rootScope.authToken = data["authToken"];
                     $rootScope.username = data["username"];
-                    $location.path("/trello");
+                    $state.go("nav.home");
                 } else {
                     vm.authError = data["error"];
                 }

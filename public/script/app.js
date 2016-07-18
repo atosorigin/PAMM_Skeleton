@@ -5,26 +5,60 @@
     var app = angular.module('pammSkeleton', [
         'pammSkeleton.controllers',
         'pammSkeleton.services',
-        'ngRoute' ]);
+        'ui.router' ]);
 
-    app.config(['$routeProvider', function($routeProvider) {
-            $routeProvider
-                .when('/login', {
-                    templateUrl: 'assets/partials/login.html'
+    app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+            $urlRouterProvider.otherwise('/login');
+
+            $stateProvider
+                .state('login', {
+                    url: '/login',
+                    views: {
+                        'header@': {
+                            templateUrl: 'assets/partials/titlebar.html'
+                        },
+                        'content@': {
+                            templateUrl: 'assets/partials/login.html'
+                        }
+                    }
                 })
-                .when('/register', {
-                    templateUrl: 'assets/partials/register.html'
+                .state('register', {
+                    url: '/register',
+                    views: {
+                        'header@': {
+                            templateUrl: 'assets/partials/titlebar.html'
+                        },
+                        'content@': {
+                            templateUrl: 'assets/partials/register.html'
+                        }
+                    }
                 })
-                .when('/home', {
-                    templateUrl: 'assets/partials/home.html',
-                    controller: "HomeCtrl"
+                .state('nav', {
+                    url: '/',
+                    views: {
+                        'header': {
+                            templateUrl: 'assets/partials/navbar.html'
+                        },
+                        'content': {
+                            templateUrl: 'assets/partials/login.html'
+                        }
+                    }
                 })
-                .when('/about', {
-                    templateUrl: 'assets/partials/about.html',
-                    controller: "AboutCtrl"
+                .state('nav.home', {
+                    url: 'home',
+                    views: {
+                        'content@': {
+                            templateUrl: 'assets/partials/home.html'
+                        }
+                    }
                 })
-                .otherwise({
-                    redirectTo: '/home'
+                .state('nav.about', {
+                    url: 'about',
+                    views: {
+                        'content@': {
+                            templateUrl: 'assets/partials/about.html'
+                        }
+                    }
                 });
           }]);
 

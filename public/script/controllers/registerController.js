@@ -6,8 +6,8 @@ var module = angular.module('pammSkeleton.controllers');
 /**
  * Controller which handles registration of a new user.
  */
-module.controller('RegisterCtrl', ['$http', '$log', '$scope', '$location', 'loginService',
-    function ($http, $log, $scope, $location, loginService) {
+module.controller('RegisterCtrl', ['$http', '$log', '$scope', '$state', 'loginService',
+    function ($http, $log, $scope, $state, loginService) {
 
         var vm = this;
 
@@ -30,7 +30,7 @@ module.controller('RegisterCtrl', ['$http', '$log', '$scope', '$location', 'logi
                 if (vm.success) {
                     vm.user = {};
                     //TODO Store the user token and auto-login
-                    $location.path("/login");
+                    $location.go("login");
                 } else {
                     vm.error = data["error"];
                     vm.user.password = null;

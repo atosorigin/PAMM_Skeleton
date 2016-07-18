@@ -1,11 +1,13 @@
 <div ng-controller="LoginCtrl as login">
-    <div class="jumbotron center-block login">
+    <div class="jumbotron center-block auth login">
         <h1 class="display-3">Login</h1>
         <form class="form">
             <input type="text" class="form-control" ng-model="login.user.name" placeholder="Username" required>
             <input type="password" name="passInput" class="form-control" ng-model="login.user.password" placeholder="Password" required>
             <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="login.authenticateUser()">Login</button>
         </form>
+
+        <a ui-sref="register"> <p> Don't have an account? Sign up. </p> </a>
 
         <div ng-show="login.authError" class="alert alert-danger" role="alert">
             <strong>Login Failed</strong> {{ login.authError }}
