@@ -9,6 +9,10 @@
    2. [IntelliJ](#intellij)
    3. [MongoDB](#mongodb)
       * [Configuration](#configuration)
+4. [Deployment Options](#deployment-options)
+   1. [Local Docker](#local-docker)
+   2. [Cloud Foundry](#cloud-foundry)
+   3. [OpenShift](#openshift)
 
 ## About
 The PAMM Skeleton project is a quick start, template project using the PAMM stack. It is designed to be barebones so that developers can download and start coding business requirements rapidly with no set-up required.
@@ -63,3 +67,17 @@ There are 3 options for configuring which MongoDB instance the application uses:
 
 More detail on MongoDB URIs can be found at:
 https://docs.mongodb.com/manual/reference/connection-string/
+
+##Deployment Options
+
+###Local Docker
+The project can be deployed using Docker locally. The quickest way to do this is using the bundled docker-compose.yml: follow the steps below.
+ 1. From the command line using the command `sbt docker:publishLocal`
+ 2. This will create a docker image named "pamm-skeleton", run `docker images` to check
+ 3. Run `docker-compose up`
+
+###Cloud Foundry
+To Do
+
+###OpenShift
+To Do
