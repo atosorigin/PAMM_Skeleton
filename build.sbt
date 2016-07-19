@@ -18,3 +18,5 @@ resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 routesGenerator := InjectedRoutesGenerator
 
 fork in run := true
+
+dockerUpdateLatest := true
