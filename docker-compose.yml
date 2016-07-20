@@ -13,6 +13,6 @@
     ports: 
       - "27017:27017"
     volumes:
-      - "~/mongo-data-remarc:/data/db"
+      - "~/mongo-data:/data/db"
     command: 
       "--smallfiles"
