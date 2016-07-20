@@ -10,7 +10,7 @@
    3. [MongoDB](#mongodb)
       * [Configuration](#configuration)
 4. [Deployment Options](#deployment-options)
-   1. [Local Docker](#local-docker)
+   1. [Docker](#docker)
    2. [Cloud Foundry](#cloud-foundry)
    3. [OpenShift](#openshift)
 
@@ -70,11 +70,12 @@ https://docs.mongodb.com/manual/reference/connection-string/
 
 ##Deployment Options
 
-###Local Docker
+###Docker
 The project can be deployed using Docker locally. The quickest way to do this is using the bundled docker-compose.yml: follow the steps below.
- 1. From the command line using the command `sbt docker:publishLocal`
+ 1. `sbt docker:publishLocal`
  2. This will create a docker image named "pamm-skeleton", run `docker images` to check
  3. Run `docker-compose up`
+ 4. Browse to `http://localhost:9000` from your browser to see the application
 
 ###Cloud Foundry
 To Do
