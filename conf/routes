@@ -17,3 +17,5 @@ GET     /stylesheets/*file                  controllers.Assets.at(path="/public/
 #Webservices
 GET     /ws/hello                   controllers.HelloController.helloWorld()
 GET     /ws/callCount               controllers.MongoController.helloMongo()
+
+GET     /ws/pageOne               controllers.PageController.pageOne()

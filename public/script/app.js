@@ -17,6 +17,10 @@
                     templateUrl: 'assets/partials/about.html',
                     controller: "AboutCtrl"
                 })
+                .when('/pageOne', {
+                    templateUrl: 'assets/partials/pageOne.html',
+                    controller: "PageOneCtrl"
+                })
                 .otherwise({
                     redirectTo: '/home'
                 });

@@ -8,7 +8,7 @@ import play.api.mvc.{Action, Controller}
 class HelloController extends Controller {
 
   def helloWorld = Action {
-    Ok("Hello World")
+    Ok("Hello Tiddler")
   }
 
 }
