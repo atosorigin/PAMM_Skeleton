@@ -1,8 +1,7 @@
 package controllers
 
-import login.{LoginUtils, AuthAction}
-import play.api.mvc.{Action, Controller}
-import utils.Constants
+import login.AuthAction
+import play.api.mvc.Controller
 
 /**
   * Created by markfearnley on 10/05/2016.

@@ -13,8 +13,7 @@ import org.joda.time.DateTime
 case class User (val username: String,
                  val password: String,
                  var authToken: String,
-                 var authDate: DateTime,
-                 var trelloToken: Option[String] = None) {
+                 var authDate: DateTime) {
 
   /**
     * Alternate constructor to generate a User from a Mongo DBObject.
@@ -26,28 +25,17 @@ case class User (val username: String,
     dbObject.as[String]("username"),
     dbObject.as[String]("password"),
     dbObject.as[String]("authToken"),
-    dbObject.as[DateTime]("authDate"),
-    dbObject.getAs[String]("trelloToken"))
+    dbObject.as[DateTime]("authDate"))
 
   /**
     * Get a Mongo DBObject populated with data for the user.
     *
     * @return Fully populated DBObject
     */
-  def getDBObject: DBObject = if (trelloToken.isEmpty) {
-    MongoDBObject(
+  def getDBObject: DBObject = MongoDBObject(
       "username" -> username,
       "password" -> password,
       "authToken" -> authToken,
       "authDate" -> authDate
     )
-  } else {
-    MongoDBObject(
-      "username" -> username,
-      "password" -> password,
-      "authToken" -> authToken,
-      "authDate" -> authDate,
-      "trelloToken" -> trelloToken.get
-    )
-  }
 }

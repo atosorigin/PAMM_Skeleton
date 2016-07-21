@@ -37,26 +37,16 @@ trait LoginUtils {
     (JsPath \ "username").read[String] and
       (JsPath \ "password").read[String] and
       (JsPath \ "authToken").read[String] and
-      (JsPath \ "authDate").read[DateTime](jodaDateReads) and
-      (JsPath \ "trelloToken").readNullable[String]
+      (JsPath \ "authDate").read[DateTime](jodaDateReads)
     ) (User.apply _)
 
   // Write object allowing the Json library to parse a User into a Json object
   val userWrites = new Writes[User] {
-    def writes(user: User) = if (user.trelloToken.isEmpty) {
-      Json.obj(
+    def writes(user: User) = Json.obj(
         "username" -> user.username,
         "password" -> user.password,
         "authToken" -> user.authToken,
         "authDate" -> JsString(user.authDate.toString()))
-    } else {
-      Json.obj(
-        "username" -> user.username,
-        "password" -> user.password,
-        "authToken" -> user.authToken,
-        "authDate" -> JsString(user.authDate.toString()),
-        "trelloToken" -> user.trelloToken)
-    }
   }
 
   implicit val userFormat: Format[User] = Format(userReads, userWrites)
