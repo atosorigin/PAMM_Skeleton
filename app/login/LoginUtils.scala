@@ -67,10 +67,9 @@ trait LoginUtils {
     * @param user User object
     * @return JsValue object that can be passed as a Json response.
     */
-  def getJsonForUser(user: User): JsValue = {
-    Json.toJson(user)
-  }
+  def getJsonForUser(user: User): JsValue = Json.toJson(user)
 
+  def getUserFromJson(json: String): User = Json.fromJson[User](Json.parse(json)).get
   /**
     * Generate a random token to be used as an Authentication token.
     *

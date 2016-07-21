@@ -10,4 +10,8 @@ object Constants {
 
   // How long an auth token has before it expires, in milliseconds
   val authTokenTimeout = 604800000
+
+  // Header for the user object in the request (only exists if the request has been authenticated)
+  val userHeader = "User"
+  val authHeader = "Authorization"
 }

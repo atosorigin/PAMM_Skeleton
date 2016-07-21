@@ -38,9 +38,6 @@
                     views: {
                         'header': {
                             templateUrl: 'assets/partials/navbar.html'
-                        },
-                        'content': {
-                            templateUrl: 'assets/partials/login.html'
                         }
                     }
                 })
