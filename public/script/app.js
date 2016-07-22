@@ -5,7 +5,9 @@
     var app = angular.module('pammSkeleton', [
         'pammSkeleton.controllers',
         'pammSkeleton.services',
-        'ui.router' ]);
+        'ui.router',
+        'ngCookies',
+        'base64']);
 
     app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/login');

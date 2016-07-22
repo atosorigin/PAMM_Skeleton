@@ -9,12 +9,29 @@ var module = angular.module('pammSkeleton.services');
 /**
  * Service which handles registration and authentication of a user.
  */
-module.factory('authService', [function() {
+module.factory('authService', ['$cookies', '$base64', function($cookies, $base64) {
 
     var factory = {}
 
     var username = null;
     var authToken = null;
+
+    var init = function() {
+        var auth = $cookies.get('auth');
+        if (auth) {
+            try {
+                var a = $base64.decode(auth);
+
+                if (a) {
+                    console.log("auth found: " + auth + " -> " + a);
+                    username = a.split(":")[0];
+                    authToken = a.split(":")[1];
+                }
+            } catch (e) {
+                $cookies.remove('auth');
+            }
+        }
+    }
 
     factory.isAuthorized = function() {
         return (username != null) && (authToken != null);
@@ -23,6 +40,12 @@ module.factory('authService', [function() {
     factory.authenticate = function(user, token) {
         username = user;
         authToken = token;
+
+        var expiry = new Date();
+        expiry.setDate(expiry.getDate() + 7);
+
+        console.log("Storing auth cookie");
+        $cookies.put('auth', $base64.encode(username + ':' + authToken), {expires:expiry});
     }
 
     factory.getUsername = function() {
@@ -34,9 +57,14 @@ module.factory('authService', [function() {
     }
 
     factory.clearCredentials = function() {
+        // Clear out the cookie to ensure the auth token isn't hanging around
+        console.log("removing cookie");
+        var cookie = $cookies.remove('auth');
         username = null;
         authToken = null;
     }
+
+    init();
 
     return factory;
 }]);
