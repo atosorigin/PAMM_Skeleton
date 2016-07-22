@@ -59,6 +59,16 @@
                 });
           }]);
 
+    app.run(['$rootScope', '$location', 'authService', function($rootScope, $location, authService){
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+            var loggedIn = authService.isAuthorized();
+            if  (toState.name != 'login' && !loggedIn) {
+                $location.url('/login');
+            }
+        });
+    }]);
+
     angular.module('pammSkeleton.services', []);
     angular.module('pammSkeleton.controllers', []);
+
 })();

@@ -17,7 +17,7 @@ module.factory('authService', [function() {
     var authToken = null;
 
     factory.isAuthorized = function() {
-        return username && authToken;
+        return (username != null) && (authToken != null);
     }
 
     factory.authenticate = function(user, token) {
