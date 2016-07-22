@@ -6,8 +6,8 @@ var module = angular.module('pammSkeleton.controllers');
 /**
  * Controller which handles authentication of a user.
  */
-module.controller('LoginCtrl', ['$http', '$log', '$scope', '$rootScope', '$state', 'loginService',
-    function ($http, $log, $scope, $rootScope, $state, loginService) {
+module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginService', 'authService',
+    function ($http, $log, $scope, $state, loginService, authService) {
 
         var vm = this;
 
@@ -18,9 +18,8 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$rootScope', '$state
          * Called when the controller first loads. Clears out all cached user credentials.
          */
         vm.init = function() {
-            // Ensure the user is logged out
-            $rootScope.authToken = null;
-            $rootScope.username = null;
+            // Ensure credentials aren't hanging around
+            authService.clearCredentials();
         };
 
         /**
@@ -35,8 +34,7 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$rootScope', '$state
                 console.log(data);
                 // Check if it was successful
                 if (data["success"]) {
-                    $rootScope.authToken = data["authToken"];
-                    $rootScope.username = data["username"];
+                    authService.authenticate(data["username"], data["authToken"]);
                     $state.go("nav.home");
                 } else {
                     vm.authError = data["error"];
