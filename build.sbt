@@ -6,7 +6,9 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
 libraryDependencies ++= Seq(
   "org.webjars" % "bootstrap" % "3.3.6",
-  "org.webjars" % "angularjs" % "1.5.5"
+  "org.webjars" % "angularjs" % "1.5.5",
+  "org.webjars" % "angular-ui-router" % "0.2.18",
+  "org.webjars.bower" % "angular-base64" % "2.0.5"
 )
 
 libraryDependencies += specs2 % Test
