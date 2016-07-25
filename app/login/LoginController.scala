@@ -60,7 +60,7 @@ class LoginController extends Controller {
     val json = request.body.asJson
 
     if (json.isEmpty) BadRequest("No login parameters given")
-    val username = (json.get \ "username").as[String]
+    val username = (json.get \ "username").as[String].toLowerCase
     val password = (json.get \ "password").as[String]
 
 
