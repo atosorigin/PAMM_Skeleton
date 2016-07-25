@@ -20,7 +20,7 @@
                             templateUrl: 'assets/partials/titlebar.html'
                         },
                         'content@': {
-                            templateUrl: 'assets/partials/login.html'
+                            templateUrl: 'assets/login/login.html'
                         }
                     }
                 })
@@ -31,11 +31,11 @@
                             templateUrl: 'assets/partials/titlebar.html'
                         },
                         'content@': {
-                            templateUrl: 'assets/partials/register.html'
+                            templateUrl: 'assets/login/register.html'
                         }
                     }
                 })
-                .state('nav', {
+                .state('app', {
                     url: '/',
                     views: {
                         'header': {
@@ -43,7 +43,7 @@
                         }
                     }
                 })
-                .state('nav.home', {
+                .state('app.home', {
                     url: 'home',
                     views: {
                         'content@': {
@@ -51,7 +51,7 @@
                         }
                     }
                 })
-                .state('nav.about', {
+                .state('app.about', {
                     url: 'about',
                     views: {
                         'content@': {

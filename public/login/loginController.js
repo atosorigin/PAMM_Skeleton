@@ -31,11 +31,10 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
             vm.success = null;
 
             var success = function(data) {
-                console.log(data);
                 // Check if it was successful
                 if (data["success"]) {
                     authService.authenticate(data["username"], data["authToken"]);
-                    $state.go("nav.home");
+                    $state.go("app.home");
                 } else {
                     vm.authError = data["error"];
                 }
