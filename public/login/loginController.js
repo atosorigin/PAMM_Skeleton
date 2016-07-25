@@ -23,6 +23,13 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
         };
 
         /**
+        * Clears any previous errors
+        */
+        vm.resetErrors = function() {
+            vm.authError = null;
+        }
+
+        /**
          * Authenticates a user. On Success, caches the returned auth token and redirects the user
          */
         vm.authenticateUser = function() {

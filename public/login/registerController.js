@@ -47,4 +47,12 @@ module.controller('RegisterCtrl', ['$http', '$log', '$scope', '$state', 'loginSe
                 success,
                 error);
         };
+
+        /**
+        * Resets the state of the controller, clearing error/success messages
+        */
+        vm.resetState = function() {
+            vm.error = null;
+            vm.success = null;
+        }
     }]);
