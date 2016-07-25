@@ -32,33 +32,38 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
         /**
          * Authenticates a user. On Success, caches the returned auth token and redirects the user
          */
-        vm.authenticateUser = function() {
-            // Reset the errors
-            vm.error = null;
-            vm.success = null;
+        vm.authenticateUser = function(isFormValid) {
 
-            var success = function(data) {
-                // Check if it was successful
-                if (data["success"]) {
-                    authService.authenticate(data["username"], data["authToken"]);
-                    $state.go("app.home");
-                } else {
-                    vm.authError = data["error"];
+            if (isFormValid) {
+
+                // Reset the errors
+                vm.error = null;
+                vm.success = null;
+                $scope.loginForm.$setPristine();
+
+                var success = function(data) {
+                    // Check if it was successful
+                    if (data["success"]) {
+                        authService.authenticate(data["username"], data["authToken"]);
+                        $state.go("app.home");
+                    } else {
+                        vm.authError = data["error"];
+                        vm.user.password = "";
+                    }
+                };
+
+                var error = function(error) {
+                    console.log(error);
+                    vm.authError = "Server error - please try again.";
                     vm.user.password = "";
-                }
-            };
+                };
 
-            var error = function(error) {
-                console.log(error);
-                vm.authError = "Server error - please try again.";
-                vm.user.password = "";
-            };
-
-            loginService.authenticateUser(
-                vm.user.name,
-                vm.user.password,
-                success,
-                error);
+                loginService.authenticateUser(
+                    vm.user.name,
+                    vm.user.password,
+                    success,
+                    error);
+            }
         };
 
         vm.init();
