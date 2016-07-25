@@ -30,7 +30,7 @@ module.controller('RegisterCtrl', ['$http', '$log', '$scope', '$state', 'loginSe
                 if (vm.success) {
                     vm.user = {};
                     //TODO Store the user token and auto-login
-                    $location.go("login");
+                    $state.go("login");
                 } else {
                     vm.error = data["error"];
                     vm.user.password = null;

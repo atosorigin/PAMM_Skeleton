@@ -4,9 +4,7 @@ var module = angular.module('pammSkeleton.services');
 
 // Example service which makes a GET call to our Play service, and returns the data as-is.
 module.factory('helloWorldService', ["$http", "authService", function($http, authService) {
-    return $http.get("/ws/hello", {
-        headers: { 'Authorization': 'Bearer ' + window.btoa(authService.getUsername() + ':' + authService.getAuthToken()) }
-    })
+    return $http.get("/ws/hello")
         .success(function(data) {
           return data;
         })
