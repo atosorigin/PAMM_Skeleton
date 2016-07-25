@@ -23,7 +23,7 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
         };
 
         /**
-         * Authenticates a user. On Success, caches the returned auth token and redirects the user to the Trello screen.
+         * Authenticates a user. On Success, caches the returned auth token and redirects the user
          */
         vm.authenticateUser = function() {
             // Reset the errors
@@ -37,12 +37,14 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
                     $state.go("app.home");
                 } else {
                     vm.authError = data["error"];
+                    vm.user.password = "";
                 }
             };
 
             var error = function(error) {
                 console.log(error);
                 vm.authError = "Server error - please try again.";
+                vm.user.password = "";
             };
 
             loginService.authenticateUser(
