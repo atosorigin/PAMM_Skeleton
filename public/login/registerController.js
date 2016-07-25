@@ -18,34 +18,35 @@ module.controller('RegisterCtrl', ['$http', '$log', '$scope', '$state', 'loginSe
          * Called to register a user. Expects the users credentials to be present.
          * On successful registration, will return the user to the login screen.
          */
-        vm.registerUser = function() {
+        vm.registerUser = function(isFormValid) {
 
-            // Reset the error status
-            vm.error = null;
-            vm.success = null;
+            if (isFormValid) {
+                // Reset the error status
+                vm.resetState();
 
-            var success = function(data) {
-                console.log(data);
-                vm.success = data["success"];
-                if (vm.success) {
-                    vm.user = {};
-                    //TODO Store the user token and auto-login
-                    $state.go("login");
-                } else {
-                    vm.error = data["error"];
-                    vm.user.password = null;
-                }
-            };
+                var success = function(data) {
+                    console.log(data);
+                    vm.success = data["success"];
+                    if (vm.success) {
+                        vm.user = {};
+                        //TODO Store the user token and auto-login
+                        $state.go("login");
+                    } else {
+                        vm.error = data["error"];
+                        vm.user.password = null;
+                    }
+                };
 
-            var error = function(error) {
-                console.log(error);
-            };
+                var error = function(error) {
+                    console.log(error);
+                };
 
-            loginService.registerUser(
-                vm.user.name,
-                vm.user.password,
-                success,
-                error);
+                loginService.registerUser(
+                    vm.user.name,
+                    vm.user.password,
+                    success,
+                    error);
+            }
         };
 
         /**
@@ -54,5 +55,6 @@ module.controller('RegisterCtrl', ['$http', '$log', '$scope', '$state', 'loginSe
         vm.resetState = function() {
             vm.error = null;
             vm.success = null;
+            $scope.registerForm.$setPristine();
         }
     }]);
