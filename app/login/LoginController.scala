@@ -5,7 +5,7 @@ import com.mongodb.casbah.commons.MongoDBObject
 import org.joda.time.DateTime
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
-import utils.{Constants, MongoUtils}
+import utils.{ValidationUtils, Constants, MongoUtils}
 
 /**
   * Created by Mark Fearnley on 17/05/16.
@@ -32,22 +32,30 @@ class LoginController extends Controller {
     //TODO  The credentials should be passed in via BasicAuth - the current approach is insecure and unsuitable for a
     //TODO  production app.
     val ptPassword = (json.get \ "password").as[String]
-    val hashedPass = LoginUtils.hashPassword(ptPassword)
 
-    val userCollection = MongoUtils.getCollection(Constants.databaseName, Constants.userCollection)
-
-    // Check no user exists with the given username
-    val query = "username" $eq username
-    if (userCollection.find(query).limit(1).nonEmpty) {
-      Ok(Json.obj("success" -> false, "error" -> "The username has already been taken."))
+    if (!ValidationUtils.validateUsername(username)) {
+      Ok(Json.obj("success" -> false, "error" -> "Invalid username: The username must be 3 or more characters and alphanumeric."))
+    } else if (!ValidationUtils.validatePassword(ptPassword)) {
+      Ok(Json.obj("success" -> false, "error" -> "Invalid password: The password must be 6 characters or more and contain at least 1 letter and 1 number."))
     } else {
 
-      // The username is unique, so save it and return the result
-      val user = User(username, hashedPass, LoginUtils.generateAuthToken(), DateTime.now())
-      val userDBO = user.getDBObject
-      userCollection += userDBO
+      val hashedPass = LoginUtils.hashPassword(ptPassword)
 
-      Ok(Json.obj("success" -> true, "username" -> user.username, "authToken" -> user.authToken))
+      val userCollection = MongoUtils.getCollection(Constants.databaseName, Constants.userCollection)
+
+      // Check no user exists with the given username
+      val query = "username" $eq username
+      if (userCollection.find(query).limit(1).nonEmpty) {
+        Ok(Json.obj("success" -> false, "error" -> "The username has already been taken."))
+      } else {
+
+        // The username is unique, so save it and return the result
+        val user = User(username, hashedPass, LoginUtils.generateAuthToken(), DateTime.now())
+        val userDBO = user.getDBObject
+        userCollection += userDBO
+
+        Ok(Json.obj("success" -> true, "username" -> user.username, "authToken" -> user.authToken))
+      }
     }
   }
 
