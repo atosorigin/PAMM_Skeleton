@@ -7,7 +7,8 @@
         'pammSkeleton.services',
         'ui.router',
         'ngCookies',
-        'base64']);
+        'base64',
+        'ui.validate']);
 
     app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.otherwise('/login');

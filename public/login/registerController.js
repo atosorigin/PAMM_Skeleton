@@ -34,6 +34,7 @@ module.controller('RegisterCtrl', ['$http', '$log', '$scope', '$state', 'loginSe
                     } else {
                         vm.error = data["error"];
                         vm.user.password = null;
+                        vm.user.confirmPassword = null;
                     }
                 };
 

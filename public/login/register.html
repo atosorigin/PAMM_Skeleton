@@ -28,6 +28,12 @@
                 <input name="password" type="password" class="form-control" ng-model="register.user.password" placeholder="Password" required>
                 <p class="help-block" ng-show="registerForm.$submitted && registerForm.password.$error.required">Please enter a password</p>
             </div>
+            <div class="form-group" ng-class="{ 'has-error' : registerForm.$submitted && registerForm.confirm_password.$invalid }">
+                <input name="confirm_password" type="password" class="form-control" ng-model="register.user.confirmPassword" placeholder="Confirm Password" required ui-validate=" '$value==register.user.password' " ui-validate-watch=" 'register.user.password' ">
+                <p class="help-block" ng-show="registerForm.$submitted && registerForm.confirm_password.$error.required">Please confirm your password</p>
+                <p class="help-block" ng-show="registerForm.$submitted && registerForm.confirm_password.$error.validator">Password does not match</p>
+            </div>
+
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-lg btn-block" >Register</button>
             </div>
