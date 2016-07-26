@@ -1,5 +1,7 @@
 package login
 
+import java.util.Base64
+
 import com.mongodb.casbah.Imports._
 import com.mongodb.casbah.commons.MongoDBObject
 import org.joda.time.DateTime
@@ -65,12 +67,18 @@ class LoginController extends Controller {
     * @return An authentication token which must be passed with all further requests.
     */
   def authenticate() = Action { request =>
-    val json = request.body.asJson
+    val authHeader = request.headers.get(Constants.authHeader)
 
-    if (json.isEmpty) BadRequest("No login parameters given")
-    val username = (json.get \ "username").as[String].toLowerCase
-    val password = (json.get \ "password").as[String]
+    if (authHeader.isEmpty || !authHeader.get.split(" ")(0).equals("Basic")) {
+      if (authHeader.isEmpty) BadRequest("No login parameters given")
+    }
 
+
+    val b64s = authHeader.get.split(" ")(1)
+    val userCreds = new String(Base64.getMimeDecoder.decode(b64s), "UTF-8")
+
+    val username = userCreds.split(":")(0).toLowerCase
+    val password = userCreds.split(":")(1)
 
     val userCollection = MongoUtils.getCollection(Constants.databaseName, Constants.userCollection)
     val userQuery = MongoDBObject("username" -> username)

@@ -34,7 +34,7 @@ module.factory('loginService', ["$http", function($http) {
      * @param error     Called if there has been an error.
      */
     factory.authenticateUser = function(username, password, success, error) {
-        $http.post("/ws/authenticate", {"username": username, "password": password})
+        $http.get("/ws/authenticate", {"headers": {"Authorization": "Basic " + window.btoa(username + ':' + password)}})
             .success(success)
             .error(error);
     };

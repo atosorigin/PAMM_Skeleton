@@ -20,4 +20,4 @@ GET     /ws/callCount               controllers.MongoController.helloMongo()
 
 #Authentication Webservices
 POST    /ws/register                login.LoginController.register()
-POST    /ws/authenticate            login.LoginController.authenticate()
+GET    /ws/authenticate            login.LoginController.authenticate()

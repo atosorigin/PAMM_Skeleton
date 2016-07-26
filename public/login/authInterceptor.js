@@ -1,7 +1,7 @@
 module.factory('authInterceptor', ['authService', '$injector', '$q', function(authService, $injector, $q) {
     var sessionInjector = {
         request: function(config) {
-            if (authService.isAuthorized) {
+            if (authService.isAuthorized()) {
                 config.headers['Authorization'] = 'Bearer '
                     + window.btoa(authService.getUsername() + ':' + authService.getAuthToken());
             }
