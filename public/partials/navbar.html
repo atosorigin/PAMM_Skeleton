@@ -1,5 +1,5 @@
 <!-- This is the global nav bar, this will appear at the top of all pages -->
-<nav class="navbar navbar-default navbar-static-top" ng-controller="NavBarCtrl">
+<nav class="navbar navbar-default navbar-static-top" ng-controller="NavBarCtrl as nav">
     <div class="container">
         <div class="navbar-header">
             <!-- This renders a button in mobile views with all nav bar items contained within -->
@@ -14,12 +14,12 @@
         <div id="navbar" class="collapse navbar-collapse">
             <!-- These are all our nav bar items (excluding brand, button etc) -->
             <ul class="nav navbar-nav">
-                <li ng-class="{ active: isActive('/home')}"><a ui-sref="app.home">Home</a></li>
-                <li ng-class="{ active: isActive('/about')}"><a ui-sref="app.about">About</a></li>
+                <li ng-class="{ active: nav.isActive('/home')}"><a ui-sref="app.home">Home</a></li>
+                <li ng-class="{ active: nav.isActive('/about')}"><a ui-sref="app.about">About</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a ui-sref="login">Logout</a></li>
+                <li><a ng-click="nav.logout()">Logout</a></li>
             </ul>
         </div>
     </div>

@@ -19,7 +19,7 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
          */
         vm.init = function() {
             // Ensure credentials aren't hanging around
-            authService.clearCredentials();
+            //authService.clearCredentials();
         };
 
         /**

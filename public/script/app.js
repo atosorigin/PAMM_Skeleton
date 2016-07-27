@@ -65,8 +65,13 @@
     app.run(['$rootScope', '$location', 'authService', function($rootScope, $location, authService){
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
             var loggedIn = authService.isAuthorized();
+
             if  (toState.name != 'login' && !loggedIn) {
+                //if you're not logged in and you try to go to anything other than the login page...
                 $location.url('/login');
+            } else if (toState.name == 'login' && loggedIn) {
+                //if you're logged in and you try to go to the login page...
+                $location.url('home');
             }
         });
     }]);
