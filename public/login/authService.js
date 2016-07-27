@@ -11,7 +11,7 @@ var module = angular.module('pammSkeleton.services');
  */
 module.factory('authService', ['$cookies', '$base64', function($cookies, $base64) {
 
-    var factory = {}
+    var factory = {};
 
     var username = null;
     var authToken = null;

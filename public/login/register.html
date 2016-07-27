@@ -24,6 +24,7 @@
                 <input name="username" type="text" class="form-control" ng-model="register.user.name" placeholder="Username" required>
                 <p class="help-block" ng-show="registerForm.$submitted && registerForm.username.$error.required">Please enter a username</p>
             </div>
+            <p class="help-block">Password should be at least 6 characters and contain both a number and a letter</p>
             <div class="form-group" ng-class="{ 'has-error' : registerForm.$submitted && registerForm.password.$invalid }">
                 <input name="password" type="password" class="form-control" ng-model="register.user.password" placeholder="Password" required>
                 <p class="help-block" ng-show="registerForm.$submitted && registerForm.password.$error.required">Please enter a password</p>

@@ -7,8 +7,18 @@ module.controller('HomeCtrl', [ '$http', '$log', '$scope', 'helloWorldService',
 
         var vm = this;
 
-        // Example of calling a service on controller load. Loads data from a service into scope for use in html.
-        helloWorldService.success(function(data) {
-            vm.hello = data;
-        });
+        vm.init = function () {
+
+            helloWorldService.getHello().success(function(data) {
+                vm.hello = data;
+            });
+
+            helloWorldService.getMongo().success(function(data) {
+                vm.helloMongo = data;
+            });
+
+        }
+
+        vm.init();
+
     }]);
