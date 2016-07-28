@@ -1,16 +1,17 @@
-module.factory('authInterceptor', ['authService', '$injector', '$q', function(authService, $injector, $q) {
+module.factory('authInterceptor', ['authService', '$injector', '$q', '$base64', function(authService, $injector, $q, $base64) {
     var sessionInjector = {
         request: function(config) {
             if (authService.isAuthorized()) {
                 config.headers['Authorization'] = 'Bearer '
-                    + window.btoa(authService.getUsername() + ':' + authService.getAuthToken());
+                    + $base64.encode(authService.getUsername() + ':' + authService.getAuthToken());
             }
             return config;
         },
 
         responseError: function(response) {
             if (response.status == 401) {
-                $injector.get('$state').go("login");
+                authService.clearCredentials();
+                $injector.get('$state').go("login", {redirect: true});
                 return $q.reject(response);
             }
 

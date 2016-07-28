@@ -9,7 +9,7 @@ var module = angular.module('pammSkeleton.services');
 /**
  * Service which handles registration and authentication of a user.
  */
-module.factory('loginService', ["$http", function($http) {
+module.factory('loginService', ["$http", '$base64', function($http, $base64) {
 
     var factory = {};
 
@@ -34,7 +34,7 @@ module.factory('loginService', ["$http", function($http) {
      * @param error     Called if there has been an error.
      */
     factory.authenticateUser = function(username, password, success, error) {
-        $http.get("/ws/authenticate", {"headers": {"Authorization": "Basic " + window.btoa(username + ':' + password)}})
+        $http.get("/ws/authenticate", {"headers": {"Authorization": "Basic " + $base64.encode(username + ':' + password)}})
             .success(success)
             .error(error);
     };
