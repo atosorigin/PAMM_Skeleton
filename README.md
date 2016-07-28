@@ -13,6 +13,9 @@
    1. [Docker](#docker)
    2. [Cloud Foundry](#cloud-foundry)
    3. [OpenShift](#openshift)
+5. [Releases](#releases)
+   1. [v0.1](#v0-1)
+   2. [v0.2](#v0-2)
 
 ## About
 The PAMM Skeleton project is a quick start, template project using the PAMM stack. It is designed to be barebones so that developers can download and start coding business requirements rapidly with no set-up required.
@@ -82,3 +85,19 @@ To Do
 
 ###OpenShift
 To Do
+
+##Releases
+
+### <a name="v0-1"></a>v0.1
+Initial release of the PAMM Skeleton.
+- Barebones, most simple, quickest to customise
+- 2 sample web pages (home, about)
+- 2 sample w/s calls (hello world, database count)
+- 1 sample database read/write operation
+
+### <a name="v0-2"></a>v0.2
+Adds a pre-build authentication model
+- Authentication module featuring login, registration and restricted pages combined with auth cookie storage & database persistence
+- Upgrades ngRoute to angular-ui-router
+- Contains angular-ui-validator and angular-base64 libraries to support authentication
+- Good examples of serverside and clientside validation
