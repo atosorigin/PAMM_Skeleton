@@ -18,15 +18,19 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
          * Called when the controller first loads. Clears out all cached user credentials.
          */
         vm.init = function() {
-            // Ensure credentials aren't hanging around
-            //authService.clearCredentials();
+            vm.resetState();
+
+            vm.showRegSuccessMsg = $state.params.registrationSuccess;
+            vm.showRedirectError = $state.params.redirect;
         };
 
         /**
         * Clears any previous errors
         */
-        vm.resetErrors = function() {
+        vm.resetState = function() {
             vm.authError = null;
+            vm.showRedirectError = false;
+            vm.showRegSuccessMsg = false;
         }
 
         /**
@@ -36,9 +40,8 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
 
             if (isFormValid) {
 
-                // Reset the errors
-                vm.error = null;
-                vm.success = null;
+                // Reset
+                vm.resetState();
                 $scope.loginForm.$setPristine();
 
                 var success = function(data) {

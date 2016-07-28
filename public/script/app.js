@@ -23,6 +23,10 @@
                         'content@': {
                             templateUrl: 'assets/login/login.html'
                         }
+                    },
+                    params: {
+                        redirect: false,
+                        registrationSuccess: false
                     }
                 })
                 .state('register', {
@@ -69,7 +73,7 @@
             if  ((toState.name != 'login' && toState.name != 'register') && !loggedIn) {
                 //if you're not logged in and you try to go to anything other than the login or register page...
                 event.preventDefault();
-                return $state.go('login');
+                return $state.go('login', {redirect: true});
             } else if (toState.name == 'login' && loggedIn) {
                 //if you're logged in and you try to go to the login page...
                 event.preventDefault();

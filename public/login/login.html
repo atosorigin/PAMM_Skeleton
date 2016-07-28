@@ -5,9 +5,23 @@
         <h1>Welcome</h1>
         <p>Please login using your user credentials to continue</p>
 
+        <!-- registration successful popup -->
+        <div ng-show="login.showRegSuccessMsg" class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" aria-label="Close" ng-click="login.resetState()"><span aria-hidden="true">&times;</span></button>
+            <strong>Success!</strong><br/>
+            You have successfully registered an account. Please Login to continue.
+        </div>
+
+        <!-- redirect for protected page error popup -->
+        <div ng-show="login.showRedirectError" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" aria-label="Close" ng-click="login.resetState()"><span aria-hidden="true">&times;</span></button>
+            <strong>Restricted</strong><br/>
+            You have tried to access a page that is restricted. Please Login to continue.
+        </div>
+
         <!-- authentication error popup -->
         <div ng-show="login.authError" class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" aria-label="Close" ng-click="login.resetErrors()"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" aria-label="Close" ng-click="login.resetState()"><span aria-hidden="true">&times;</span></button>
             <strong>Login Failed</strong><br/>
             {{ login.authError }}
         </div>
