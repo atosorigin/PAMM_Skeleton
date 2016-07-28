@@ -62,16 +62,18 @@
                 });
           }]);
 
-    app.run(['$rootScope', '$location', 'authService', function($rootScope, $location, authService){
+    app.run(['$rootScope', '$location', '$state', 'authService', function($rootScope, $location, $state, authService){
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
             var loggedIn = authService.isAuthorized();
 
-            if  (toState.name != 'login' && !loggedIn) {
-                //if you're not logged in and you try to go to anything other than the login page...
-                $location.url('/login');
+            if  ((toState.name != 'login' && toState.name != 'register') && !loggedIn) {
+                //if you're not logged in and you try to go to anything other than the login or register page...
+                event.preventDefault();
+                return $state.go('login');
             } else if (toState.name == 'login' && loggedIn) {
                 //if you're logged in and you try to go to the login page...
-                $location.url('home');
+                event.preventDefault();
+                return $state.go('app.home');
             }
         });
     }]);
