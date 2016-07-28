@@ -9,6 +9,13 @@
    2. [IntelliJ](#intellij)
    3. [MongoDB](#mongodb)
       * [Configuration](#configuration)
+4. [Deployment Options](#deployment-options)
+   1. [Docker](#docker)
+   2. [Cloud Foundry](#cloud-foundry)
+   3. [OpenShift](#openshift)
+5. [Releases](#releases)
+   1. [v0.1](#v0-1)
+   2. [v0.2](#v0-2)
 
 ## About
 The PAMM Skeleton project is a quick start, template project using the PAMM stack. It is designed to be barebones so that developers can download and start coding business requirements rapidly with no set-up required.
@@ -63,3 +70,34 @@ There are 3 options for configuring which MongoDB instance the application uses:
 
 More detail on MongoDB URIs can be found at:
 https://docs.mongodb.com/manual/reference/connection-string/
+
+##Deployment Options
+
+###Docker
+The project can be deployed using Docker locally. The quickest way to do this is using the bundled docker-compose.yml: follow the steps below.
+ 1. `sbt docker:publishLocal`
+ 2. This will create a docker image named "pamm-skeleton", run `docker images` to check
+ 3. Run `docker-compose up`
+ 4. Browse to `http://localhost:9000` from your browser to see the application
+
+###Cloud Foundry
+To Do
+
+###OpenShift
+To Do
+
+##Releases
+
+### <a name="v0-1"></a>v0.1
+Initial release of the PAMM Skeleton.
+- Barebones, most simple, quickest to customise
+- 2 sample web pages (home, about)
+- 2 sample w/s calls (hello world, database count)
+- 1 sample database read/write operation
+
+### <a name="v0-2"></a>v0.2
+Adds a pre-build authentication model
+- Authentication module featuring login, registration and restricted pages combined with auth cookie storage & database persistence
+- Upgrades ngRoute to angular-ui-router
+- Contains angular-ui-validator and angular-base64 libraries to support authentication
+- Good examples of serverside and clientside validation
