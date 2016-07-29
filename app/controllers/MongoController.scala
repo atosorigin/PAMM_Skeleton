@@ -1,9 +1,10 @@
 package controllers
 
 import com.mongodb.MongoException
-import play.api.mvc.{Action, Controller}
 import com.mongodb.casbah.Imports._
 import play.api.Play
+import play.api.mvc.{Action, Controller}
+import utils.{Constants, MongoUtils}
 
 /**
   * Created by markfearnley on 10/05/2016.
@@ -21,11 +22,8 @@ class MongoController extends Controller {
   def helloMongo = Action {
 
     try {
-      val mongoUri = Play.current.configuration.getString("mongodb.uri")
-      val collection = if (mongoUri.isDefined)
-          MongoClient(MongoClientURI(mongoUri.get))("pamm_skeleton")("hello_play")
-        else
-          MongoClient()("pamm_skeleton")("hello_play")
+
+      val collection = MongoUtils.getCollection(Constants.databaseName, Constants.helloCollection)
 
       // Get a list of all current counts saved to the database
       val q = countTag $exists true

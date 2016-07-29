@@ -25,7 +25,7 @@ trait MongoUtils {
     if (mongoUri.isDefined)
       MongoClient(MongoClientURI(mongoUri.get))(dbName)(collection)
     else
-      MongoClient()("pamm_skeleton")("hello_play")
+      MongoClient()(dbName)(collection)
   }
 }
 

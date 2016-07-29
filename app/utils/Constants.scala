@@ -5,8 +5,9 @@ package utils
   */
 object Constants {
 
-  val databaseName = "db"
+  val databaseName = "pamm_skeleton"
   val userCollection = "user"
+  val helloCollection = "hello_play"
 
   // How long an auth token has before it expires, in milliseconds
   val authTokenTimeout = 604800000

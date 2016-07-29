@@ -42,6 +42,7 @@
                 })
                 .state('app', {
                     url: '/',
+                    abstract: true,
                     views: {
                         'header': {
                             templateUrl: 'assets/partials/navbar.html'
