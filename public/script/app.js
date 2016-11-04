@@ -25,6 +25,8 @@
                         }
                     },
                     params: {
+                        returnUrl: null,
+                        message: null,
                         redirect: false,
                         registrationSuccess: false
                     }
@@ -74,10 +76,13 @@
             if  ((toState.name != 'login' && toState.name != 'register') && !loggedIn) {
                 //if you're not logged in and you try to go to anything other than the login or register page...
                 event.preventDefault();
-                return $state.go('login', {redirect: true});
+                console.log('app.js: ' + toState.name);
+                return $state.go('login', {redirect: true, returnUrl: toState.name});
             } else if (toState.name == 'login' && loggedIn) {
+
                 //if you're logged in and you try to go to the login page...
                 event.preventDefault();
+
                 return $state.go('app.home');
             }
         });

@@ -21,7 +21,11 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
             vm.resetState();
 
             vm.showRegSuccessMsg = $state.params.registrationSuccess;
+            vm.RegSuccess = $state.params.message;
             vm.showRedirectError = $state.params.redirect;
+            vm.intendedUrl = $state.params.returnUrl;
+
+            console.log('Return URL: ' + vm.intendedUrl);
         };
 
         /**
@@ -29,6 +33,7 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
         */
         vm.resetState = function() {
             vm.authError = null;
+            vm.returnUrl = null;
             vm.showRedirectError = false;
             vm.showRegSuccessMsg = false;
         }
@@ -45,10 +50,12 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
                 $scope.loginForm.$setPristine();
 
                 var success = function(data) {
+
                     // Check if it was successful
                     if (data["success"]) {
                         authService.authenticate(data["username"], data["authToken"]);
-                        $state.go("app.home");
+                        var appURL = (vm.intendedUrl != null) ? vm.intendedUrl : 'app.home';
+                        $state.go(appURL);
                     } else {
                         vm.authError = data["error"];
                         vm.user.password = "";
