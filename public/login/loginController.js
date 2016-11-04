@@ -21,11 +21,9 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
             vm.resetState();
 
             vm.showRegSuccessMsg = $state.params.registrationSuccess;
-            vm.RegSuccess = $state.params.message;
             vm.showRedirectError = $state.params.redirect;
             vm.intendedUrl = $state.params.returnUrl;
 
-            console.log('Return URL: ' + vm.intendedUrl);
         };
 
         /**
@@ -33,7 +31,7 @@ module.controller('LoginCtrl', ['$http', '$log', '$scope', '$state', 'loginServi
         */
         vm.resetState = function() {
             vm.authError = null;
-            vm.returnUrl = null;
+            vm.intendedUrl = null;
             vm.showRedirectError = false;
             vm.showRegSuccessMsg = false;
         }

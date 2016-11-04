@@ -26,7 +26,6 @@
                     },
                     params: {
                         returnUrl: null,
-                        message: null,
                         redirect: false,
                         registrationSuccess: false
                     }
